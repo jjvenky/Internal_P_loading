@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-# Internal Phosphous Loading
-
-Data and code for: Orihel DM, Baulch HM, Casson NJ, North RL, parsons CT, Seckar DCM, Venkiteswaran JJ. Internal phosphorus loading in Canadian freshwaters: A critical review and data analysis.
-=======
 # Interal P loading
 
 Data and code associated with Orihel, Baulch, Casson, North, Parsons, Seckar, and Venkiteswaran. *Internal phosphorus loading in Canadian freshwaters: A critical review and data analysis.*
@@ -17,4 +12,3 @@ The raw data and R-scripts used to perform the analyses and figures are here:
 * Six csv files exported from the database
 
 The R-scripts for the analyses and figures require (at the very least) RODBC or Hmisc, rpart, rpart.plot, ggplot2, grid, gridExtra, GGally, Cairo, plyr, dplyr. Thanks to the authors of these packages.
->>>>>>> master
