@@ -17,6 +17,7 @@ library(tidyr)
 #####################################
 # Load data exported from the database
 #####################################
+
 geol <- read.csv(file = "GEOL.csv")
 lakes <- read.csv(file = "LAKES.csv")
 pflux <- read.csv(file = "PFLUX.csv")
@@ -56,22 +57,18 @@ pflux <- pflux %>% mutate(TDP.VALUE_mg_m2_d = TDP.VALUE)
 
 
 #####################################
-# Convert the TP and TDP fluxes into SRP with the relationships decribed in Figure C1 and C2
+# Convert the SRP and TDP fluxes into TP with the relationships decribed in the Appendix
 #####################################
 
-# SRP µg/l = 0.859 * TP µg/l - 37.4 (Figure C1) 
-# SRP µg/l = 0.928 * TDP µg/l - 3.92 (Figure C2) *** NJC says these values should be SRP µg/l = 0.959 * TDP µg/l - 0.0018657
+pflux <- pflux %>% mutate(TP_from_TDP_mg_m2_d = 1.04 * TDP.VALUE_mg_m2_d + 0.029)
+pflux <- pflux %>% mutate(TP_from_SRP_mg_m2_d = 1.11 * SRP.VALUE_mg_m2_d + 0.042)
 
-pflux <- pflux %>% mutate(SRP_from_TP_mg_m2_d = TP.VALUE_mg_m2_d * 0.85943 - 0.03744238)
-pflux <- pflux %>% mutate(SRP_from_TDP_mg_m2_d = TDP.VALUE_mg_m2_d * 0.959 - 0.0018657)
-
-# Get one SRP flux per row (this means if multiple P fluxes were reported then they will produce multiple rows)
-# Retain source of the SRP fluxes in a new column
+# Get one TP flux per row (this means if multiple P fluxes were reported then they will produce multiple rows)
+# Retain source of the TP fluxes in a new column
 # Remove all the other P flux volums to simplify the data.frame
-
 pflux <- pflux %>% 
-  gather(SRP.FLUX.mg_m2_d.source, SRP.FLUX.mg_m2_d.value, SRP.VALUE_mg_m2_d, SRP_from_TDP_mg_m2_d, SRP_from_TP_mg_m2_d, na.rm = TRUE) %>% 
-  select(-SRP.VALUE, -SRP.UNITS, -TDP.VALUE, -TDP.UNITS, -TP.VALUE, -TP.UNITS, -TP.VALUE_mg_m2_d, -TDP.VALUE_mg_m2_d)
+  gather(TP.FLUX.mg_m2_d.source, TP.FLUX.mg_m2_d.value, TP.VALUE_mg_m2_d, TP_from_TDP_mg_m2_d, TP_from_SRP_mg_m2_d, na.rm = TRUE) %>% 
+  select(-SRP.VALUE, -SRP.UNITS, -TDP.VALUE, -TDP.UNITS, -TP.VALUE, -TP.UNITS, -SRP.VALUE_mg_m2_d, -TDP.VALUE_mg_m2_d)
 
 # Assemble data (this will throw a few errors but is fine)
 pflux <- left_join(pflux, lakes, by = "LAKE.ID") %>% 
