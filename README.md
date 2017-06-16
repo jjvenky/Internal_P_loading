@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/67434289.svg)](https://zenodo.org/badge/latestdoi/67434289)
+
 # Internal P loading
 
 Data and code associated with Orihel, Baulch, Casson, North, Parsons, Seckar, and Venkiteswaran. *Internal phosphorus loading in Canadian freshwaters: A critical review and data analysis.*
