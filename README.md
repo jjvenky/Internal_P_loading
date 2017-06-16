@@ -19,6 +19,6 @@ The raw data and R-scripts used to perform the analyses and create the figures a
 
 The R-scripts for the analyses and figures require (at the very least):
 * RODBC or Hmisc to export the tables from the mdb file
-* rpart, rpart.plot, ggplot2, grid, gridExtra, GGally, Cairo, dplyr, tidyr
+* ggplot2, grid, gridExtra, GGally, Cairo, dplyr, tidyr
 
 Thanks to the authors of these packages.
