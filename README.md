@@ -2,9 +2,7 @@
 
 # Internal P loading
 
-Data and code associated with Orihel, Baulch, Casson, North, Parsons, Seckar, and Venkiteswaran. *Internal phosphorus loading in Canadian freshwaters: A critical review and data analysis.*
-
-Manuscript submitted November 2016 to Canadian Journal of Fisheries and Aquatic Sciences, cjfas-2016-0500.
+Data and code associated with Orihel, Baulch, Casson, North, Parsons, Seckar, and Venkiteswaran. 2017. *Internal phosphorus loading in Canadian freshwaters: A critical review and data analysis.* Canadian Journal of Fisheries and Aquatic Sciences, 74(12): 2005-2029, https://doi.org/10.1139/cjfas-2016-0500
 
 The raw data and R-scripts used to perform the analyses and create the figures are here:
 
